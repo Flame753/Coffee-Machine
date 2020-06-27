@@ -83,6 +83,13 @@ files:
     if __name__ == '__main__':
         CoffeeMachineTest('machine.coffee_machine').run_tests()
   learner_created: false
+- name: machine/coffee_machine.py
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/68/stages/367/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/68/stages/367/implement">JetBrains
+    Academy</a>
+  time: Sat, 27 Jun 2020 22:41:12 UTC
 record: -1
