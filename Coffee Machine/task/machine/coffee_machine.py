@@ -18,6 +18,13 @@ stock = {"water": 400,
          "disposable cups": 9,
          "money": 550}
 
+
+def show_supplies():
+    print("The coffee machine has: ")
+    for item in stock:
+        print(f"{stock[item]} of {item}")
+
+
 message = "Write how many {} of {} the coffee machine has: "
 # The amount of ingredient that are stocked
 amount_water = int(input(message.format("ml", "water")))
