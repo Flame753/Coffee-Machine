@@ -31,11 +31,11 @@ def buy_drink():
 
 def fill_supplies():
     message = "Write how many {} of {} do you want to add: "
-    for key, value in stock.items():
+    for item, value in stock.items():
         if value[1]:
-            stock[key][0] = value[0] + int(input(message.format(value[1], key)))
-        elif key == "disposable cups":
-            stock[key][0] = value[0] + int(input(message.format(key, "coffee")))
+            stock[item][0] = value[0] + int(input(message.format(value[1], item)))
+        elif item == "disposable cups":
+            stock[item][0] = value[0] + int(input(message.format(item, "coffee")))
 
 
 def take_money():
