@@ -1,6 +1,15 @@
-WATER = 200  # ml
-MILK = 50  # ml
-COFFEE_BEANS = 15  # g
+drinks = {"espresso": {"cost": 4.0,
+                       "recipe": {"water": [250, "ml"],
+                                  "coffee beans": [16, "g"]}},
+          "latte": {"cost": 7.0,
+                    "recipe": {"water": [350, "ml"],
+                               "milk": [75, "ml"],
+                               "coffee beans": [20, "g"]}},
+          "cappuccino": {"cost": 6.0,
+                         "recipe": {"water": [200, "ml"],
+                                    "milk": [100, "ml"],
+                                    "coffee beans": [12, "g"]}}
+          }
 
 message = "Write how many {} of {} the coffee machine has: "
 # The amount of ingredient that are stocked
