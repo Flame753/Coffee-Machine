@@ -1,3 +1,4 @@
+# The types of drinks that the coffee shop has.
 drinks = {"espresso": {"cost": 4.0,
                        "recipe": {"water": [250, "ml"],
                                   "coffee beans": [16, "g"]}},
@@ -10,6 +11,12 @@ drinks = {"espresso": {"cost": 4.0,
                                     "milk": [100, "ml"],
                                     "coffee beans": [12, "g"]}}
           }
+# What the store has in stock.
+stock = {"water": 400,
+         "milk": 540,
+         "coffee beans": 120,
+         "disposable cups": 9,
+         "money": 550}
 
 message = "Write how many {} of {} the coffee machine has: "
 # The amount of ingredient that are stocked
