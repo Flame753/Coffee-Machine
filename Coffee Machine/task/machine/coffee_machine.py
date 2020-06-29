@@ -17,14 +17,14 @@ stock = {"water": [400, "ml"],
          "milk": [540, "ml"],
          "coffee beans": [120, "grams"],
          "disposable cups": [9, None],
-         "money": [550, "$"]}
+         "money": [550, None]}
 
 
 def show_supplies():
     print("The coffee machine has: ")
     for key, value in stock.items():
         if key == "money":
-            print(f"{value[1]}{value[0]} of {key}")
+            print(f"${value[0]} of {key}")
         else:
             print(f"{value[0]} of {key}")
 
