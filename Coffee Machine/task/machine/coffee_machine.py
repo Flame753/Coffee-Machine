@@ -1,16 +1,17 @@
 # The types of drinks that the coffee shop has.
-drinks = {"espresso": {"cost": 4.0,
-                       "recipe": {"water": 250,
-                                  "coffee beans": 16}},
-          "latte": {"cost": 7.0,
-                    "recipe": {"water": 350,
-                               "milk": 75,
-                               "coffee beans": 20}},
-          "cappuccino": {"cost": 6.0,
-                         "recipe": {"water": 200,
-                                    "milk": 100,
-                                    "coffee beans": 12}}
-          }
+drink_lis = ["espresso", "latte", "cappuccino"]
+drink_inf = {"espresso": {"cost": 4.0,
+                          "recipe": {"water": 250,
+                                     "coffee beans": 16}},
+             "latte": {"cost": 7.0,
+                       "recipe": {"water": 350,
+                                  "milk": 75,
+                                  "coffee beans": 20}},
+             "cappuccino": {"cost": 6.0,
+                            "recipe": {"water": 200,
+                                       "milk": 100,
+                                       "coffee beans": 12}}
+             }
 # What the store has in stock.
 stock = {"water": [400, "ml"],
          "milk": [540, "ml"],
@@ -25,8 +26,14 @@ def show_supplies():
         print(f"{value[0]} of {key}")
 
 
+def get_inf_from_num(num, inf):
+    """ inf: should be 'cost' or 'recipe' ONLY
+        num: Should be between 1-3 """
+    return drink_inf[drink_lis[num - 1]][inf]
+
+
 def buy_drink():
-    pass
+    type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
 
 
 def fill_supplies():
@@ -42,6 +49,7 @@ def take_money():
     pass
 
 
+get_inf_from_num(1, "cost")
 show_supplies()
 fill_supplies()
 amount_ingredients = [amount_water // WATER, amount_beans // COFFEE_BEANS, amount_milk // MILK]
