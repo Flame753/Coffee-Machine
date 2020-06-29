@@ -23,23 +23,56 @@ stock = {"water": [400, "ml"],
 def show_supplies():
     print("The coffee machine has: ")
     for key, value in stock.items():
-        print(f"{value[0]} of {key}")
+        if key == "money":
+            print(f"${value[0]} of {key}")
+        else:
+            print(f"{value[0]} of {key}")
 
 
-def get_drink_inf(num, inf):
+def get_drink_inf(drink_num, inf):
     """ inf: should be 'cost' or 'recipe' ONLY
         num: Should be between 1-3 """
-    return drink_inf[drink_lis[num - 1]][inf]
+    return drink_inf[drink_lis[drink_num - 1]][inf]
+
+
+def have_enough(drink_num):
+    """ Returns: True if have enough items and False if not"""
+    recipe = get_drink_inf(drink_num, "recipe")
+    ans = list()
+    for key, value in recipe.items():
+        if stock[key][0] >= value and stock["disposable cups"] != 0:
+            ans.append(True)
+        else:
+            ans.append(False)
+    return all(ans)
+
+
+def what_not_enough(drink_num):
+    """ Returns: A list of items don't have enough of """
+    recipe = get_drink_inf(drink_num, "recipe")
+    ans = list()
+    for key, value in recipe.items():
+        if stock[key][0] < value:
+            ans.append(key)
+        elif stock["disposable cups"] == 0:
+            ans.append("disposable cups")
+    return ans
 
 
 def buy_drink():
-    type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
-    recipe = get_drink_inf(type_drink, "recipe")
-    cost = get_drink_inf(type_drink, "cost")
-    for key, value in recipe.items():
-        stock[key][0] = stock.get(key)[0] - value
-    stock["disposable cups"][0] = stock["disposable cups"][0] - 1
-    stock["money"][0] = int(stock["money"][0] + cost)  # Will need to remove int() to add decimals
+    type_drink = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ")
+    if type_drink != "back":
+        type_drink = int(type_drink)
+        recipe = get_drink_inf(type_drink, "recipe")
+        cost = get_drink_inf(type_drink, "cost")
+        if have_enough(type_drink):
+            for name_item, value in recipe.items():
+                stock[name_item][0] = stock.get(name_item)[0] - value
+            stock["disposable cups"][0] = stock["disposable cups"][0] - 1
+            stock["money"][0] = int(stock["money"][0] + cost)  # Remove int() to add decimals to make it more realistic
+            print("I have enough resources, making you a coffee!")
+        else:
+            print(f"Sorry, not enough {what_not_enough(type_drink)}!")
 
 
 def fill_supplies():
@@ -52,19 +85,24 @@ def fill_supplies():
 
 
 def take_money():
-    print(f"I gave you {stock['money'][0]}")
+    print(f"I gave you ${stock['money'][0]}")
     stock["money"][0] = 0
 
 
-action = input("Write action (buy, fill, take): ")
-show_supplies()
-if action == "buy":
-    buy_drink()
+while True:
+    action = input("Write action (buy, fill, take, remaining, exit): ")
     print()
-elif action == "fill":
-    fill_supplies()
-    print()
-elif action == "take":
-    take_money()
-    print()
-show_supplies()
+    if action == "buy":
+        buy_drink()
+        print()
+    elif action == "fill":
+        fill_supplies()
+        print()
+    elif action == "take":
+        take_money()
+        print()
+    elif action == "remaining":
+        show_supplies()
+        print()
+    elif action == "exit":
+        break
