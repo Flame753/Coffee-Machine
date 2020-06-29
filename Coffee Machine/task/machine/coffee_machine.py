@@ -17,13 +17,16 @@ stock = {"water": [400, "ml"],
          "milk": [540, "ml"],
          "coffee beans": [120, "grams"],
          "disposable cups": [9, None],
-         "money": [550, None]}
+         "money": [550, "$"]}
 
 
 def show_supplies():
     print("The coffee machine has: ")
     for key, value in stock.items():
-        print(f"{value[0]} of {key}")
+        if key == "money":
+            print(f"{value[1]}{value[0]} of {key}")
+        else:
+            print(f"{value[0]} of {key}")
 
 
 def get_drink_inf(drink_num, inf):
@@ -80,7 +83,7 @@ def fill_supplies():
 
 
 def take_money():
-    print(f"I gave you {stock['money'][0]}")
+    print(f"I gave you ${stock['money'][0]}")
     stock["money"][0] = 0
 
 
