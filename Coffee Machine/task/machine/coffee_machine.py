@@ -26,10 +26,21 @@ def show_supplies():
         print(f"{value[0]} of {key}")
 
 
-def get_drink_inf(num, inf):
+def get_drink_inf(drink_num, inf):
     """ inf: should be 'cost' or 'recipe' ONLY
         num: Should be between 1-3 """
-    return drink_inf[drink_lis[num - 1]][inf]
+    return drink_inf[drink_lis[drink_num - 1]][inf]
+
+
+def have_enough(drink_num):
+    recipe = get_drink_inf(drink_num, "recipe")
+    ans = list()
+    for key, value in recipe.items():
+        if stock[key][0] >= value and stock["disposable cups"] != 0:
+            ans.append(True)
+        else:
+            ans.append(False)
+    return all(ans)
 
 
 def buy_drink():
@@ -57,7 +68,8 @@ def take_money():
     stock["money"][0] = 0
 
 
-while True:
+print(have_enough(1))
+while False:
     action = input("Write action (buy, fill, take, remaining, exit): ")
     print()
     if action == "buy":
