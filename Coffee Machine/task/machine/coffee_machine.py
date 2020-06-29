@@ -52,11 +52,6 @@ def fill_supplies():
 
 
 def take_money():
-    pass
-
-
-show_supplies()
-buy_drink()
-show_supplies()
-fill_supplies()
+    print(f"I gave you {stock['money'][0]}")
+    stock["money"][0] = 0
 
