@@ -255,7 +255,7 @@ feedback_link: https://hyperskill.org/projects/68/stages/370/implement
 status: Failed
 feedback:
   message: "Exception in test #7\n\nTraceback (most recent call last):\n  File \"\
-    coffee_machine.py\", line 94, in <module>\n    buy_drink()\n  File \"coffee_machine.py\"\
+    coffee_machine.py\", line 95, in <module>\n    buy_drink()\n  File \"coffee_machine.py\"\
     , line 63, in buy_drink\n    type_drink = int(input(\"What do you want to buy?\
     \ 1 - espresso, 2 - latte, 3 - cappuccino: \"))\nValueError: invalid literal for\
     \ int() with base 10: 'back'\n\nPlease find below the output of your program during\
@@ -265,5 +265,5 @@ feedback:
     \ of disposable cups\n$550 of money\n\nWrite action (buy, fill, take, remaining,\
     \ exit): > buy\n\nWhat do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:\
     \ > back"
-  time: Mon, 29 Jun 2020 17:37:12 UTC
+  time: Mon, 29 Jun 2020 17:41:10 UTC
 record: -1

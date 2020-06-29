@@ -63,14 +63,15 @@ def buy_drink():
     type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
     recipe = get_drink_inf(type_drink, "recipe")
     cost = get_drink_inf(type_drink, "cost")
-    if have_enough(type_drink):
-        for name_item, value in recipe.items():
-            stock[name_item][0] = stock.get(name_item)[0] - value
-        stock["disposable cups"][0] = stock["disposable cups"][0] - 1
-        stock["money"][0] = int(stock["money"][0] + cost)  # Remove int() to add decimals to make it more realistic
-        print("I have enough resources, making you a coffee!")
-    else:
-        print(f"Sorry, not enough {what_not_enough(type_drink)}!")
+    if type_drink != "back":
+        if have_enough(type_drink):
+            for name_item, value in recipe.items():
+                stock[name_item][0] = stock.get(name_item)[0] - value
+            stock["disposable cups"][0] = stock["disposable cups"][0] - 1
+            stock["money"][0] = int(stock["money"][0] + cost)  # Remove int() to add decimals to make it more realistic
+            print("I have enough resources, making you a coffee!")
+        else:
+            print(f"Sorry, not enough {what_not_enough(type_drink)}!")
 
 
 def fill_supplies():
