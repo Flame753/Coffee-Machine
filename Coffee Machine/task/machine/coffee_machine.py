@@ -26,7 +26,7 @@ def show_supplies():
         print(f"{value[0]} of {key}")
 
 
-def get_inf_from_num(num, inf):
+def get_drink_inf(num, inf):
     """ inf: should be 'cost' or 'recipe' ONLY
         num: Should be between 1-3 """
     return drink_inf[drink_lis[num - 1]][inf]
@@ -34,6 +34,7 @@ def get_inf_from_num(num, inf):
 
 def buy_drink():
     type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
+    recipe = get_drink_inf(type_drink, "recipe")
 
 
 def fill_supplies():
@@ -49,7 +50,6 @@ def take_money():
     pass
 
 
-get_inf_from_num(1, "cost")
 show_supplies()
 fill_supplies()
 amount_ingredients = [amount_water // WATER, amount_beans // COFFEE_BEANS, amount_milk // MILK]
