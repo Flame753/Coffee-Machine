@@ -43,15 +43,29 @@ def have_enough(drink_num):
     return all(ans)
 
 
+def what_not_enough(drink_num):
+    recipe = get_drink_inf(drink_num, "recipe")
+    ans = list()
+    for key, value in recipe.items():
+        if stock[key][0] < value:
+            ans.append(key)
+        elif stock["disposable cups"] == 0:
+            ans.append("disposable cups")
+    return ans
+
+
 def buy_drink():
     type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
     recipe = get_drink_inf(type_drink, "recipe")
     cost = get_drink_inf(type_drink, "cost")
-    for key, value in recipe.items():
-        stock[key][0] = stock.get(key)[0] - value
-    stock["disposable cups"][0] = stock["disposable cups"][0] - 1
-    stock["money"][0] = int(stock["money"][0] + cost)  # Will need to remove int() to add decimals
-    print("I have enough resources, making you a coffee!")
+    if have_enough(type_drink):
+        for name_item, value in recipe.items():
+            stock[name_item][0] = stock.get(name_item)[0] - value
+        stock["disposable cups"][0] = stock["disposable cups"][0] - 1
+        stock["money"][0] = int(stock["money"][0] + cost)  # Remove int() to add decimals to make it more realistic
+        print("I have enough resources, making you a coffee!")
+    else:
+        print(f"Sorry, not enough {what_not_enough(type_drink)}!")
 
 
 def fill_supplies():
@@ -68,7 +82,6 @@ def take_money():
     stock["money"][0] = 0
 
 
-print(have_enough(1))
 while False:
     action = input("Write action (buy, fill, take, remaining, exit): ")
     print()
