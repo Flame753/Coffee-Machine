@@ -84,16 +84,20 @@ def take_money():
     stock["money"][0] = 0
 
 
-while False:
+while True:
     action = input("Write action (buy, fill, take, remaining, exit): ")
     print()
     if action == "buy":
         buy_drink()
+        print()
     elif action == "fill":
         fill_supplies()
+        print()
     elif action == "take":
         take_money()
+        print()
     elif action == "remaining":
         show_supplies()
+        print()
     elif action == "exit":
         break
