@@ -40,6 +40,7 @@ def buy_drink():
         stock[key][0] = stock.get(key)[0] - value
     stock["disposable cups"][0] = stock["disposable cups"][0] - 1
     stock["money"][0] = int(stock["money"][0] + cost)  # Will need to remove int() to add decimals
+    print("I have enough resources, making you a coffee!")
 
 
 def fill_supplies():
@@ -56,15 +57,16 @@ def take_money():
     stock["money"][0] = 0
 
 
-action = input("Write action (buy, fill, take): ")
-show_supplies()
-if action == "buy":
-    buy_drink()
+while True:
+    action = input("Write action (buy, fill, take, remaining, exit): ")
     print()
-elif action == "fill":
-    fill_supplies()
-    print()
-elif action == "take":
-    take_money()
-    print()
-show_supplies()
+    if action == "buy":
+        buy_drink()
+    elif action == "fill":
+        fill_supplies()
+    elif action == "take":
+        take_money()
+    elif action == "remaining":
+        show_supplies()
+    elif action == "exit":
+        break
