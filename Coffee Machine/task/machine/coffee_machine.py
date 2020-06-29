@@ -33,6 +33,7 @@ def get_drink_inf(drink_num, inf):
 
 
 def have_enough(drink_num):
+    """ Returns: True if have enough items and False if not"""
     recipe = get_drink_inf(drink_num, "recipe")
     ans = list()
     for key, value in recipe.items():
@@ -44,6 +45,7 @@ def have_enough(drink_num):
 
 
 def what_not_enough(drink_num):
+    """ Returns: A list of items don't have enough of """
     recipe = get_drink_inf(drink_num, "recipe")
     ans = list()
     for key, value in recipe.items():
