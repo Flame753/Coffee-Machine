@@ -55,3 +55,16 @@ def take_money():
     print(f"I gave you {stock['money'][0]}")
     stock["money"][0] = 0
 
+
+action = input("Write action (buy, fill, take): ")
+show_supplies()
+if action == "buy":
+    buy_drink()
+    print()
+elif action == "fill":
+    fill_supplies()
+    print()
+elif action == "take":
+    take_money()
+    print()
+show_supplies()
