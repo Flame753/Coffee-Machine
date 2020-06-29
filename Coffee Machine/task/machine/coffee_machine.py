@@ -35,6 +35,11 @@ def get_drink_inf(num, inf):
 def buy_drink():
     type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
     recipe = get_drink_inf(type_drink, "recipe")
+    cost = get_drink_inf(type_drink, "cost")
+    for key, value in recipe.items():
+        stock[key][0] = stock.get(key)[0] - value
+    stock["disposable cups"][0] = stock["disposable cups"][0] - 1
+    stock["money"][0] = int(stock["money"][0] + cost)  # Will need to remove int() to add decimals
 
 
 def fill_supplies():
@@ -50,6 +55,8 @@ def take_money():
     pass
 
 
+show_supplies()
+buy_drink()
 show_supplies()
 fill_supplies()
 amount_ingredients = [amount_water // WATER, amount_beans // COFFEE_BEANS, amount_milk // MILK]
