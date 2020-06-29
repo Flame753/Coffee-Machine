@@ -60,10 +60,11 @@ def what_not_enough(drink_num):
 
 
 def buy_drink():
-    type_drink = int(input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: "))
-    recipe = get_drink_inf(type_drink, "recipe")
-    cost = get_drink_inf(type_drink, "cost")
+    type_drink = input("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ")
     if type_drink != "back":
+        type_drink = int(type_drink)
+        recipe = get_drink_inf(type_drink, "recipe")
+        cost = get_drink_inf(type_drink, "cost")
         if have_enough(type_drink):
             for name_item, value in recipe.items():
                 stock[name_item][0] = stock.get(name_item)[0] - value
